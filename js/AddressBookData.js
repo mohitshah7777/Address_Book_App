@@ -3,7 +3,7 @@ class AddressBookData{
 
     get fullname(){ return this._fullname; }
     set fullname(fullname){
-        let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
+        let nameRegex = RegExp('^[A-Z_]{1}[a-zA-Z_ ]{3,}$');
         if( nameRegex.test(fullname)){
             this._fullname=fullname;
         }
@@ -25,7 +25,7 @@ class AddressBookData{
 
     get address(){ return this._address; }
     set address(address){
-        let addressRegex = RegExp('[A-Z]{1}[a-z]{3,}');
+        let addressRegex = RegExp('^[a-zA-Z0-9_][a-zA-Z0-9_ ]{4,}$');
         if( addressRegex.test(address)){
             this._address=address;
         }
