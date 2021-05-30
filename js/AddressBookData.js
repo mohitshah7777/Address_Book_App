@@ -1,3 +1,4 @@
+// UC-4
 class AddressBookData{
 
     get fullname(){ return this._fullname; }
@@ -12,12 +13,11 @@ class AddressBookData{
     get phone(){ return this._phone; }
     set phone(phone){
         let phoneRegex1 = RegExp(/^[\+]?[(]?[0-9]{3}[)]?[0-9]{3}[-\s\.]?[0-9]{6,13}$/im);
-        let phoneRegex3 = RegExp(/^[0-9]{3}[0-9]{7,11}$/im);
-
+        let phoneRegex2 = RegExp(/^[0-9]{3}[0-9]{7,11}$/im);
         if( phoneRegex1.test(phone)){
             this._phone=phone;
         }
-        else if( phoneRegex3.test(phone)){
+        else if( phoneRegex2.test(phone)){
             this._phone=phone;
         }
         else throw 'Invalid Phone Number';  
