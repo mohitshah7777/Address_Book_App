@@ -52,7 +52,7 @@ class AddressBookData{
     }
     
     toString(){
-        return "fullname = '"+this.fullname + ", phone = '" + this.phone + ", address ='" + this.address +
-                        ", city = '"+this.city+ ", state = '" + this.state +", zip-code = '" + this.zip; 
+        return "fullname = "+this.fullname + ", phone = " + this.phone + ", address =" + this.address +
+                        ", city = "+this.city+ ", state = " + this.state +", zip-code = " + this.zip; 
     }
 }
