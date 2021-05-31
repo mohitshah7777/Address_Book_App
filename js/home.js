@@ -37,7 +37,7 @@ const getAddressBookDataFromStorage = () => {
     return localStorage.getItem('AddressBookList') ? JSON.parse(localStorage.getItem('AddressBookList')) : [];
 }
 
-//UC-14
+//UC-14 remove details
 const remove = (node) => {
     let addressBookData = addressBookList.find(personData => personData._id == node.id);
     if(!addressBookData) return;
