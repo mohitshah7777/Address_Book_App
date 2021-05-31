@@ -79,6 +79,7 @@ const createAddressBook = () => {
         setTextValue('.test-error', e);
         throw e;
     }
+    addressBookData.id = Math.floor((Math.random() * 100000) + 1);
     addressBookData.phone = getInputValuesById('#phone');
     addressBookData.address = getInputValuesById('#address');
     addressBookData.city = getInputValuesById('#city');

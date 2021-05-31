@@ -1,6 +1,11 @@
 // UC-4
 class AddressBookData{
 
+    get id(){ return this._id; }
+    set id(id){
+        this._id=id;
+    }
+
     get fullname(){ return this._fullname; }
     set fullname(fullname){
         let nameRegex = RegExp('^[A-Z_]{1}[a-zA-Z_ ]{3,}$');
@@ -52,7 +57,7 @@ class AddressBookData{
     }
     
     toString(){
-        return "fullname = "+this.fullname + ", phone = " + this.phone + ", address =" + this.address +
+        return "id = "+this.id+"fullname = "+this.fullname + ", phone = " + this.phone + ", address =" + this.address +
                         ", city = "+this.city+ ", state = " + this.state +", zip-code = " + this.zip; 
     }
 }
