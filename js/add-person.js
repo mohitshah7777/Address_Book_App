@@ -1,3 +1,6 @@
+// UC-15
+let isUpdate = false;
+let addressBookObj = {};
 window.addEventListener('DOMContentLoaded', (event) => {
     const name = document.querySelector('#name');
     const textError = document.querySelector('.text-error');
@@ -58,7 +61,28 @@ window.addEventListener('DOMContentLoaded', (event) => {
             zipError.textContent = e;
         }
     });
+
+    checkForUpdate();
 });
+
+// UC-15
+const checkForUpdate = () => {
+    const addressBookJson = localStorage.getItem('editEmp');
+    isUpdate = addressBookJson ? true : false;
+    if(!isUpdate) return;
+    addressBookObj = JSON.parse(addressBookJson);
+    setForm();
+}
+
+const setForm = () => {
+    setValue('#name', addressBookObj._fullname);
+    setValue('#phone', employeePayrollObj._phone);
+    setValue('#address', employeePayrollObj._address);
+    setValue('#city', employeePayrollObj._city);
+    setValue('#state', employeePayrollObj._state);
+    setValue('#zip', employeePayrollObj._zip);
+
+}
 
 // UC-6
 const save = () => {
