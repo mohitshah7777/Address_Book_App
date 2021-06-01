@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     addressBookList = getAddressBookDataFromStorage();
     document.querySelector(".person-count").textContent = addressBookList.length;
     createInnerHTML();
-    localStorage.removeItem('editEmp');
+    localStorage.removeItem('editContact');
 });
 
 const createInnerHTML = () => {
@@ -39,13 +39,20 @@ const getAddressBookDataFromStorage = () => {
 
 //UC-14 remove details
 const remove = (node) => {
-    let addressBookData = addressBookList.find(personData => personData._id == node.id);
-    if(!addressBookData) return;
+    let addressBook = addressBookList.find(personData => personData._id == node.id);
+    if(!addressBook) return;
     const index = addressBookList
                     .map(personData => personData._id)
-                    .indexOf(addressBookData._fullname);
+                    .indexOf(addressBook._id);
     addressBookList.splice(index,1);
     localStorage.setItem("AddressBookList", JSON.stringify(addressBookList));
     document.querySelector(".person-count").textContent = addressBookList.length;
     createInnerHTML();
+}
+
+const update = (node) => {
+    let addressBook = addressBookList.find(personData => personData._id == node.id)
+    if(!addressBook) return;
+    localStorage.setItem('editContact', JSON.stringify(addressBook));
+    window.location.replace(site_properties.add_person_page);
 }
