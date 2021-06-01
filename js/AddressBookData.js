@@ -57,7 +57,7 @@ class AddressBookData{
     }
     
     toString(){
-        return "id = "+this.id+"fullname = "+this.fullname + ", phone = " + this.phone + ", address =" + this.address +
-                        ", city = "+this.city+ ", state = " + this.state +", zip-code = " + this.zip; 
+        return "id = "+this.id+"\nfullname = "+this.fullname + "\nphone = " + this.phone + "\naddress =" + this.address +
+                        "\ncity = "+this.city+ "\nstate = " + this.state +"\nzip-code = " + this.zip; 
     }
 }

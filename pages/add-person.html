@@ -33,10 +33,10 @@
     </div>
     <!-- UC-3 -->
     <div class="form">
-        <form class="form1" action="#" onreset="resetForm()" onsubmit="save()">
+        <form class="form1" action="#" onreset="resetForm()" onsubmit="save(event)">
             <div class="row-content">
-                <label class="label-text" for="name">Full Name</label>
-                <input class="input" type="text" id="name" name="name" placeholder="Your name..." required>
+                <label class="label-text" for="fullname">Full Name</label>
+                <input class="input" type="text" id="fullname" name="fullname" placeholder="Your name..." required>
                 <error-output class="text-error" for="text"></error-output>
             </div>
             <div class="row-content">
@@ -94,6 +94,8 @@
     </div>
     <script defer src="../js/AddressBookData.js"></script>
     <script defer src="../js/add-person.js"></script>
+    <!-- <script defer src="../js/add-person.js"></script> -->
+
 
 </body>
 
