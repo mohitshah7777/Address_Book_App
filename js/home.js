@@ -24,8 +24,8 @@ const createInnerHTML = () => {
             <td>${addressBookData._zip}</td>
             <td>${addressBookData._phone}</td>
             <td>
-            <img id="${addressBookData._id}" onclick="remove(this)" src="../assets/delete-black-18dp.svg" alt="delete">
-            <img id="${addressBookData._id}" onclick="update(this)" src="../assets/create-black-18dp.svg" alt="edit">
+            <img id="${addressBookData.id}" onclick="remove(this)" src="../assets/delete-black-18dp.svg" alt="delete">
+            <img id="${addressBookData.id}" onclick="update(this)" src="../assets/create-black-18dp.svg" alt="edit">
             </td>
         </tr>`;
     }
@@ -39,11 +39,11 @@ const getAddressBookDataFromStorage = () => {
 
 //UC-14 remove details
 const remove = (node) => {
-    let addressBook = addressBookList.find(personData => personData._id == node.id);
+    let addressBook = addressBookList.find(personData => personData.id == node.id);
     if(!addressBook) return;
     const index = addressBookList
-                    .map(personData => personData._id)
-                    .indexOf(addressBook._id);
+                    .map(personData => personData.id)
+                    .indexOf(addressBook.id);
     addressBookList.splice(index,1);
     localStorage.setItem("AddressBookList", JSON.stringify(addressBookList));
     document.querySelector(".person-count").textContent = addressBookList.length;
@@ -51,7 +51,7 @@ const remove = (node) => {
 }
 
 const update = (node) => {
-    let addressBook = addressBookList.find(personData => personData._id == node.id)
+    let addressBook = addressBookList.find(personData => personData.id == node.id)
     if(!addressBook) return;
     localStorage.setItem('editContact', JSON.stringify(addressBook));
     window.location.replace(site_properties.add_person_page);
