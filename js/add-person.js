@@ -147,48 +147,6 @@ const createAndUpdateStorage = () => {
 }
 
 // UC-16
-// const createAddressBookData = (id) => {
-//     let addressBookData = new AddressBookData();
-//     if(!id)
-//         addressBookData.id = createNewAddressBookId();
-//     else 
-//         addressBookData.id = id;
-//     setAddressBookData(addressBookData);
-//     return addressBookData;
-// }
-
-// // UC-16
-// const setAddressBookData = (addressBookData) => {
-//     try{
-//         addressBookData.fullname = addressBookObj._fullname;
-//     }catch(e){
-//         setTextValue('.text-error',e);
-//         throw e;
-//     }
-//     try{
-//         addressBookData.phone = addressBookObj._phone;
-//     }catch(e){
-//         setTextValue('.phone-error',e);
-//         throw e;
-//     }
-//     try{
-//         addressBookData.address = addressBookObj._address;
-//     }catch(e){
-//         setTextValue('.add-error',e);
-//         throw e;
-//     }
-//     addressBookData.city = addressBookObj._city;
-//     addressBookData.state = addressBookObj._state;
-//     try{
-//         addressBookData.zip = addressBookObj._zip;
-//     }catch(e){
-//         setTextValue('.zip-error',e);
-//         throw e;
-//     }
-//     alert(addressBookData.toString());
-// }
-
-// UC-16
 const createNewAddressBookId = () => {
     let personID = localStorage.getItem("AddressBookID");
     personID = !personID ? 1 : (parseInt(personID)+1).toString();
