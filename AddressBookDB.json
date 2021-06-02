@@ -1,0 +1,31 @@
+{
+    "AddressBookDB": [
+        {
+            "id": 1,
+            "_fullname": "Mohit Shah",
+            "_phone": 9922334455,
+            "_address": "Kondhwa",
+            "_city": "Pune",
+            "_state": "Maharashtra",
+            "_zip": 411048
+        },
+        {
+            "id": 2,
+            "_fullname": "Darshan Patil",
+            "_phone": 7878565656,
+            "_address": "Krishna Nagar",
+            "_city": "Bhopal",
+            "_state": "Madhya Pradesh",
+            "_zip": 450336
+        },
+        {
+            "id": 3,
+            "_fullname": "Vinod Sharma",
+            "_phone": 9923441166,
+            "_address": "New Apartment",
+            "_city": "Chennai",
+            "_state": "Tamilnadu",
+            "_zip": 423156
+        }
+    ]
+}
