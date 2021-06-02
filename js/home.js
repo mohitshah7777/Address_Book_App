@@ -1,12 +1,69 @@
 // UC-12 
 let addressBookList;
 window.addEventListener('DOMContentLoaded', (event) => {
-    // UC-13
-    addressBookList = getAddressBookDataFromStorage();
+    // UC-18
+    if (site_properties.use_local_storage.match("true")){
+        getAddressBookDataFromStorage();
+    }
+    else{
+        getAddressBookDataFromServer();
+    }
+});
+
+const processAddressBookDataResponse = () => {
     document.querySelector(".person-count").textContent = addressBookList.length;
     createInnerHTML();
     localStorage.removeItem('editContact');
-});
+}
+
+//UC-18
+const getAddressBookDataFromStorage = () => {
+    addressBookList = localStorage.getItem('AddressBookList') ? JSON.parse(localStorage.getItem('AddressBookList')) : [];
+    processAddressBookDataResponse();
+}
+
+const getAddressBookDataFromServer = () => {
+    makeServiceCall("GET", site_properties.server_url, true).then(responseText => {
+        addressBookList = JSON.parse(responseText);
+        processAddressBookDataResponse();
+    })
+    .catch(error => {
+        console.log("GET Error Status: "+JSON.stringify(error));
+        addressBookList = [];
+        processAddressBookDataResponse();
+    });
+}
+
+function makeServiceCall(methodType, url, async = true, data = null){
+    return new Promise(function (resolve, reject){
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            console.log("State Changed Called. Ready Sate: " + xhr.readyState+" Status:"+xhr.status);
+            if(xhr.status.toString().match('^[2][0-9]{2}$')){
+                resolve(xhr.responseText);
+            } else if(xhr.status.toString().match('^[4,5][0-9]{2}$')){
+                reject({
+                    status: xhr.status,
+                    statusText: xhr.statusText
+                });
+                console.log("XHR Failed");
+            }
+        }
+        xhr.onerror = function(){
+            reject({
+                status : this.status,
+                statusText : xhr.statusText
+            });
+        }
+        xhr.open(methodType, url, async);
+        if(data){
+            console.log(JSON.stringify(data));
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(JSON.stringify(data));
+        }else xhr.send();
+        console.log(methodType+" request sent to the server");
+    });
+}
 
 const createInnerHTML = () => {
     const headerHtml = "<th></th><th>Full Name</th><th>Address</th><th>City</th><th>State</th><th>Zip-Code</th><th>Phone Number</th><th>Actions</th>";
@@ -30,11 +87,6 @@ const createInnerHTML = () => {
         </tr>`;
     }
     document.querySelector('#table-display').innerHTML = innerHtml;
-}
-
-//UC-13
-const getAddressBookDataFromStorage = () => {
-    return localStorage.getItem('AddressBookList') ? JSON.parse(localStorage.getItem('AddressBookList')) : [];
 }
 
 //UC-14 remove details
